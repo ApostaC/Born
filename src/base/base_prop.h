@@ -1,6 +1,10 @@
 #pragma once
 #include <genericIO.h>
 #include<cassert>
+/**
+ * NOTHING IS DONE HERE
+ * We may add some code...
+ */
 class baseProp {
 public:
 baseProp(){

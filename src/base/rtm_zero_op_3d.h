@@ -24,7 +24,7 @@ virtual bool forward(bool add, std::shared_ptr<my_vector> model, std::shared_ptr
 virtual bool adjoint(bool add, std::shared_ptr<my_vector> model, std::shared_ptr<my_vector> data, int iter);
 ~rtm_zero_op(){
 	delete_rtm_op();
-}
+}j
 void delete_rtm_op(){
 };
 void create_transfer_sinc_data( int nsinc);

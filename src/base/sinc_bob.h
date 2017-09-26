@@ -17,6 +17,7 @@ class sinc_bob{
       if(itab==ntab) itab=ntab-1;
        return table[itab];
     }
+
     std::vector<std::vector<float>> table;
     int ntab,nsinc;
     float dtab;

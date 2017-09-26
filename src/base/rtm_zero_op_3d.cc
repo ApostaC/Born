@@ -5,11 +5,19 @@
 #include "deriv_3d.h"
 #include "laplac_3d.h"
 #include "map_data_3d.h"
+/**
+ * CONSTRUCTOR
+ */
 rtm_zero_op::rtm_zero_op(std::shared_ptr<SEP::paramObj> par,
 	std::shared_ptr<baseProp> prop,
 	std::shared_ptr<vel_fd_3d>vel_3d, std::shared_ptr<source_func>source_func,
 	std::shared_ptr<data_rtm_3d> dat, std::shared_ptr<image_rtm_3d>img,
 	float ap,bool v,bool enc,std::vector<int> r_vec, bool do_src,bool redo_src){
+
+	/**
+	 * variable: data image and rand_vec are member variables 
+	 */
+
 	std::vector<float> ds;
 	data=dat;
 	setProp(prop);
@@ -22,6 +30,7 @@ rtm_zero_op::rtm_zero_op(std::shared_ptr<SEP::paramObj> par,
 	calc_stability(ds,data->nt);
 	set_fd_basics(par,source_func,ap,v);
 	_prop->setNtblock(50);
+	
 
 	image=img;
 

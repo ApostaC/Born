@@ -5,17 +5,17 @@ set(CMAKE_INCLUDE_CURRENT_DIR TRUE)
 
 
 
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}  -Ofast")
-include(CheckCXXCompilerFlag)
-CHECK_CXX_COMPILER_FLAG("-std=c++11" COMPILER_SUPPORTS_CXX11)
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}  -Ofast")		#ADD -Ofast TO CXX_FLAGS
+include(CheckCXXCompilerFlag)	
+CHECK_CXX_COMPILER_FLAG("-std=c++11" COMPILER_SUPPORTS_CXX11)	#CHECK IF COMPILER SUPPORTS CXX11
 if(COMPILER_SUPPORTS_CXX11)
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")	#ADD -std=c++11 TO CXX_FLAGS
 else()
         message(SEND_ERROR "The compiler ${CMAKE_CXX_COMPILER} has no C++11 support. Please use a different C++ compiler.")
 endif()
 
 enable_language(CXX)
-find_library(LIBTBB tbb REQUIRED)
+find_library(LIBTBB tbb REQUIRED)		#FIND tbb AND STORE ITS DIR TO LIBTBB
 
 FIND_PACKAGE(hypercube NO_MODULE REQUIRED)
 INCLUDE_DIRECTORIES(${hypercube_DIRNAME_include})
@@ -27,15 +27,15 @@ INCLUDE_DIRECTORIES(${genericIO_DIRNAME_include})
 
 
 
-add_subdirectory(base)
+add_subdirectory(base)			#./base IS INCLUDED AND MAKE
 
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/base)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/base)	#INCLUDE DIR
 
-ADD_EXECUTABLE(RTM3D rtm.cc)
+ADD_EXECUTABLE(RTM3D rtm.cc)			
 ADD_EXECUTABLE(Model3D model.cc)
-TARGET_LINK_LIBRARIES(RTM3D base genericCpp hypercube ${LIBTBB})
+TARGET_LINK_LIBRARIES(RTM3D base genericCpp hypercube ${LIBTBB})	#LINK LIBRARIES
 TARGET_LINK_LIBRARIES(Model3D base genericCpp hypercube ${LIBTBB})
 
 
-add_subdirectory(util)
-install(TARGETS Model3D RTM3D DESTINATION bin)
+add_subdirectory(util)					#MAKE ./util
+install(TARGETS Model3D RTM3D DESTINATION bin)		#INSTALL exe INTO bin
